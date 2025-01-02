@@ -22,7 +22,7 @@ function lagrangeInterpolation(points, k) {
         result += (yi * numerator) / denominator;
     }
 
-    return Math.round(result); // Round to handle floating-point imprecision
+    return Math.round(result); 
 }
 
 // Function to process a test case
@@ -35,13 +35,13 @@ function processTestCase(testCase) {
         if (key === 'keys') return;
 
         const { base, value } = testCase[key];
-        const x = parseInt(key); // Use the key as x-coordinate
-        const y = parseInt(value, parseInt(base)); // Convert value to decimal
+        const x = parseInt(key); 
+        const y = parseInt(value, parseInt(base)); 
 
         points.push({ x, y });
     });
 
-    // Sort points by x-coordinate to ensure consistency
+   
     points.sort((a, b) => a.x - b.x);
 
     // Use only the first k points for interpolation
@@ -51,14 +51,14 @@ function processTestCase(testCase) {
     return lagrangeInterpolation(selectedPoints, k);
 }
 
-// Read test cases from JSON files
+
 const testCase1 = JSON.parse(fs.readFileSync('inp1.json', 'utf-8'));
 const testCase2 = JSON.parse(fs.readFileSync('inp2.json', 'utf-8'));
 
-// Compute the secrets for both test cases
+
 const secret1 = processTestCase(testCase1);
 const secret2 = processTestCase(testCase2);
 
-// Output the secrets (constant terms c)
-console.log(secret1); // Output the constant term for test case 1
-console.log(secret2); // Output the constant term for test case 2
+
+console.log(secret1); 
+console.log(secret2); 
